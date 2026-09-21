@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "titulo": "Bienvenido al blog",
+    "contenido": "Este es el primer artículo de ejemplo.",
+    "autor": "Alberto",
+    "fecha": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "titulo": "Apache como reverse proxy",
+    "contenido": "Apache recibe la petición y la reenvía a Express.",
+    "autor": "Alberto",
+    "fecha": "2026-09-21T00:00:00.000Z"
+  }
+]
