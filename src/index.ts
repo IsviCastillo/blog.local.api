@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 import { readJSON, writeJSON } from "./db";
+import * as os from "os"
+
 
 const app = express();
 app.use(express.json());
@@ -76,6 +78,26 @@ app.delete("/articulos/:id", (req, res) => {
     return res.status(404).json({ error: "Articulo no encontrado" });
   writeJSON(FILE, filtrados);
   res.status(204).send();
+});
+
+app.get('/health', (req, res) => {
+  // Simulación de falla
+  //http://localhost:9000/health?simular=falla
+  if (req.query.simular === 'falla') {
+    return res.status(503).json({
+      estado: 'no saludable',
+      nodo: os.hostname(),
+      timestamp: new Date().toISOString(),
+      mensaje: 'Falla simulada'
+    });
+  }
+
+  // Estado normal
+  res.status(200).json({
+    estado: 'saludable',
+    nodo: os.hostname(),
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // ---------- Arranque ----------
